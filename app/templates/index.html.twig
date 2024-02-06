@@ -1,0 +1,42 @@
+{% extends "base_auth.html.twig" %}
+
+{% block body %}
+
+{% if msg %}
+    <div class="alert alert-{{msg[1]}}" role="alert">
+        {{msg[0]}}
+    </div>
+{% endif %}
+
+<h1>Connexion</h1>
+<form action="" method="post">
+    <div>
+        <label for="email">Email</label>
+        <input 
+            type="email"
+            id="email"
+            name="email"
+            required="required"
+            placeholder="Entrez votre email"
+        />
+    </div>
+
+    <div>
+        <label for="password">Password</label>
+        <input 
+            type="password"
+            id="password"
+            name="password"
+            required="required"
+            placeholder="Entrez votre password"
+        />
+    </div>
+
+    <div>
+        <input type="submit" value="Connexion" name="connexion"/>
+    </div>
+
+</form>
+
+<a href="register.php">Pas de compte ?</a>
+{% endblock body %}
