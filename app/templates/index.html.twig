@@ -2,27 +2,24 @@
 
 {% block body %}
 
-
 <div class="container justify-content-center">
-    {% if msg %}
     <div class="row">
+        <!-- Espacement gauche -->
         <div class="col-3"></div>
-        <div class="col-6">
-            <div class="alert alert-{{msg[1]}}" role="alert">
-                {{msg[0]}}
-            </div>
-        </div>
-        <div class="col-3"></div>
-    </div>
-    {% endif %}
-    <div class="row">
-        <div class="col-3"></div>
+        <!-- Div de Connexion -->
         <div class="col-6">
             <div class="card mt-5">
                 <div class="card-header text-center">
                     <h2>Connexion</h2>
                 </div>
                 <div class="card-body">
+                    <!-- Message Alerte -->
+                    {% if msg %}
+                        <div class="alert alert-{{msg[1]}}" role="alert">
+                            {{msg[0]}}
+                        </div>
+                    {% endif %}
+                    <!-- Formulaire de Connexion -->
                     <form action="" method="post">
                         <div class="mb-3">
                             <label for="email" class="form-label">Email address</label>
@@ -46,6 +43,9 @@
                                 placeholder="Entrez votre password"
                             />
                         </div>
+                        <div class="mb-3">
+                            <a href="register.php">Pas de compte ?</a> 
+                        </div>
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-primary" value="Connexion" name="connexion">Submit</button>
                         </div>
@@ -53,6 +53,8 @@
                 </div>
             </div>
         </div>
+        <!-- Espacement droit -->
+        <div class="col-3"></div>
     </div>
 </div>
 {% endblock body %}

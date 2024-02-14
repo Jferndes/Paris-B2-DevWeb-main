@@ -31,4 +31,14 @@ class Users extends Repo
         $stmt->execute($data);
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
+
+    public function isAlreadyCreated(string $email)
+    {
+        $user = $this->getUserByEmail(['email' => $email]);
+        if ($user) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

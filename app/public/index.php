@@ -8,17 +8,21 @@
     $page = new Page();
     $userObject = new Users();
 
+    // Recuperation du formulaire
     if (isset($_POST['connexion'])) {
         $user = $userObject->getUserByEmail([
             'email' => $_POST['email']
         ]);
 
+        // Detection User
         if (!$user) {
             $page->session->addFlash("Email ou mot de passe incorrect !", "danger");
         } else {
+            // Detection password
             if (!password_verify($_POST['password'], $user['password'])) {
                 $page->session->addFlash("Email ou mot de passe incorrect !", "danger");
             } else {
+                // Creation Session
                 $page->session->add('user', []);
                 $page->session->addFlash("Bienvenue", "success");
                 header("Location: dashboard.php");
