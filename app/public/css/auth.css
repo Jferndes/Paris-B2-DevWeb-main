@@ -1,0 +1,10 @@
+body {
+    background: linear-gradient(to right, #95dada, #f86f91); /* Remplacez ces couleurs par celles de votre choix */
+    margin: 0; /* Supprime les marges par défaut du body */
+    padding: 0; /* Supprime le padding par défaut du body */
+    height: 100vh; /* Assure que le dégradé couvre toute la hauteur de la vue */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif; /* Choisissez une police de caractères de votre choix */
+}

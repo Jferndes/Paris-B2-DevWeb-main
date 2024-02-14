@@ -2,7 +2,7 @@
 
 namespace App;
 
-class User extends Repo
+class Users extends Repo
 {
     private $id;
     private $email;
