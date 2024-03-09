@@ -16,11 +16,17 @@ class Repo
         }
     }
 
-    public function getAllTable(string $table)
+        public function getAllTable(string $table)
     {
-        $stmt = $this->link->prepare("SELECT * FROM $table");
+        switch ($table) {
+            case 'Mission':
+                $stmt = $this->link->prepare("SELECT * FROM Missions");
+                break;
+            default:
+                $stmt = $this->link->prepare("SELECT * FROM $table");
+                break;
+        }
         $stmt->execute();
         return $stmt->fetchAll();
     }
-
 }

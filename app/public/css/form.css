@@ -1,0 +1,85 @@
+/* Style du corps de la page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Style du conteneur principal du formulaire */
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style du titre */
+h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center; /* Centrer le titre */
+}
+
+/* Style des labels */
+label {
+    font-weight: bold;
+}
+
+/* Style des champs de saisie */
+input[type="text"],
+select,
+textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Style des champs de sélection multiples */
+select[multiple] {
+    height: auto;
+}
+
+/* Style du bouton de soumission */
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Style des options dans les champs de sélection */
+option {
+    font-size: 16px;
+}
+
+/* Hover effect pour le bouton de soumission */
+input[type="submit"] {
+    display: block;
+    width: 100%; /* Le bouton prend toute la largeur */
+    margin: 0 auto; /* Centrer le bouton horizontalement */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    box-sizing: border-box; /* Inclure le padding et le border dans la largeur */
+}
+
+/* Media query pour une mise en page réactive */
+@media screen and (max-width: 600px) {
+    .container {
+        margin: 20px;
+    }
+}
