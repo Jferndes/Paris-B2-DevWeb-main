@@ -16,7 +16,7 @@ class Repo
         }
     }
 
-        public function getAllTable(string $table)
+    public function getAllTable(string $table)
     {
         switch ($table) {
             case 'Mission':
@@ -28,5 +28,17 @@ class Repo
         }
         $stmt->execute();
         return $stmt->fetchAll();
+    }
+
+    public function insert(string $table, array $data)
+    {
+        $columns = implode(', ', array_keys($data));
+        $placeholders = implode(', ', array_fill(0, count($data), '?'));
+
+        $sql = "INSERT INTO $table ($columns) VALUES ($placeholders)";
+        $stmt = $this->link->prepare($sql);
+        $stmt->execute(array_values($data));
+
+        return $this->link->lastInsertId();
     }
 }

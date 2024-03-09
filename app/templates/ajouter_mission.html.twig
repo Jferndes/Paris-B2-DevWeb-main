@@ -1,7 +1,7 @@
 {% extends "base_form.html.twig" %} {% block body %}
 <div class="container">
   <h1>Ajouter une mission</h1>
-  <form action="form.php" method="post">
+  <form action="creerMission.php" method="post">
     <!-- Le numéro de dossier est auto-incrément, pas besoin de le renseigner -->
 
     <!-- Champ de saisie pour le motif -->
@@ -43,7 +43,7 @@
     <label for="standardiste">Standardiste :</label>
     <select id="standardiste" name="standardiste" required>
       {% for standardiste in standardistes %}
-      <option value="{{ standardiste.id }}">
+      <option value="{{ standardiste.matricule }}">
         {{ standardiste.nom }} {{ standardiste.prenom }}
       </option>
       {% endfor %}</select

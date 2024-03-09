@@ -23,7 +23,10 @@
                 $page->session->addFlash("Email ou mot de passe incorrect !", "danger");
             } else {
                 // Creation Session
-                $page->session->add('user', []);
+                $page->session->add('user', [
+                    'email' => $user['email'],
+                    'grade' => $user['grade']
+                ]);
                 $page->session->addFlash("Bienvenue", "success");
                 header("Location: dashboard.php");
                 exit();
