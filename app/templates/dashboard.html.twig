@@ -11,8 +11,9 @@
 {% block body %}
     {% include "navbar.html.twig" %}
     {% if msg %}
-        <div class="alert alert-{{ msg[1] }} mt-3" role="alert">
-            {{ msg[0] }}
+        <div class="alert alert-{{msg[1]}} alert-dismissible" role="alert">
+            {{msg[0]}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     {% endif %}
 
