@@ -37,6 +37,11 @@ class Session
         return isset($_SESSION['user']);
     }
 
+    public function getUserId()
+    {
+        return isset($_SESSION['user']['id']) ? $_SESSION['user']['id'] : null;
+    }
+
     public function hasRole(string $role)
     {
         return $_SESSION['user']['role'] == $role ? true : false;
@@ -46,6 +51,11 @@ class Session
     {
         $_SESSION["flash"]["msg"] = $msg;
         $_SESSION["flash"]["type"] = $type;
+    }
+
+    public function isAdmin()
+    {
+        return isset($_SESSION['user']['grade']) && $_SESSION['user']['grade'] == 1;
     }
 
     public function getFlash()
