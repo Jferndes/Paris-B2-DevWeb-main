@@ -10,11 +10,11 @@ class Page
 
     function __construct()
     {    
-        $this->session = new Session();   
-
+        $prefixe = str_contains(getcwd(), 'admin') ? "../" : "";
+        $this->session = new Session();
         $loader = new \Twig\Loader\FilesystemLoader('../templates');
         $this->twig = new \Twig\Environment($loader, [
-            'cache' => '../var/cache/compilation_cache',
+            'cache' => $prefixe . '../var/cache/compilation_cache',
             'debug' => true
         ]);
     }

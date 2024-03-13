@@ -32,6 +32,14 @@ class Users extends Repo
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
 
+    public function getAllUsers()
+    {
+        $sql = "SELECT * FROM Users";
+        $stmt = $this->link->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
     public function isAlreadyCreated(string $email)
     {
         $user = $this->getUserByEmail(['email' => $email]);

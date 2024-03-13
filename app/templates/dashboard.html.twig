@@ -1,15 +1,65 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-
+{% include "navbar.html.twig" %}
 {% if msg %}
     <div class="alert alert-{{msg[1]}}" role="alert">
         {{msg[0]}}
     </div>
 {% endif %}
 
-<h1>Dashbord</h1>
-<a href="logout.php">Déconnexion</a>
+<div class="row mt-5 mx-5 justify-content-center">
+    <div class="col-7">
+        <div class="row mb-3 align-items-center">
+            <div class="col-9">
+                <h3>Bonjour MACHIN</h3>
+                <p>Vous êtes actuellement connecté blablabla</p>
+            </div>
+            <div class="col-3">
+                <button type="button" class="btn btn-primary"><h3>New</h3></button>
+            </div>
+        </div>
+    </div>
+</div>
 
-
+<div class="row">
+    <div class="container">
+        <div class="row">
+            <div class="col-9">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Mes Interventions</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Numéro de Dossier</th>
+                                        <th>Statut</th>
+                                        <th>Urgence</th>
+                                        <th>Client</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for mission in missions %}
+                                        <tr>
+                                            <td>{{ mission.numeroDossier }}</td>
+                                            <td>{{ mission.nomStatut }}</td>
+                                            <td>{{ mission.nomUrgence }}</td>
+                                            <td>{{ mission.nomClient }} {{ mission.prenomClient }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                text
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock body %}

@@ -2,7 +2,7 @@
 
 namespace App;
 
-class Intervenants extends Repo
+class IntervenantsMission extends Repo
 {
     private $id;
     private $misison_id;
