@@ -9,22 +9,22 @@
     </div>
 {% endif %}
 
-<div>TEST</div>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Email</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for user in users %}
+<div class="container">
+    <table class="table">
+        <thead>
             <tr>
-                <td>{{ user['id']}}</td>
-                <td>{{ user['email']}}</td>
+                <th>Id</th>
+                <th>Email</th>
             </tr>
-        {% endfor %}
-    </tbody>
-
-</table>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.email }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock body %}
