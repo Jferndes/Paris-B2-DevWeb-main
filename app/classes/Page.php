@@ -10,7 +10,8 @@ class Page
 
     function __construct()
     {    
-        $prefixe = str_contains(getcwd(), 'admin') ? "../" : "";
+        //$prefixe = str_contains(getcwd(), 'admin') ? "../" : "";
+        $prefixe = "";
         $this->session = new Session();
         $loader = new \Twig\Loader\FilesystemLoader('../templates');
         $this->twig = new \Twig\Environment($loader, [
