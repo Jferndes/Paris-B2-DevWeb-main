@@ -16,9 +16,13 @@
         exit();
     }
 
+    $userData = [
+        'userId' => $page->session->getUserId()
+    ];
+
     echo $page->render('dashboard.html.twig', [
         'msg' => isset($_SESSION["flash"]) ? $page->session->getFlash() : false,
-        'missions' => $mission->getAllMission(),
+        'missions' => $mission->getMyMissions($userData),
         'isAdmin' => $page->session->isAdmin()
     ]);
 
