@@ -34,4 +34,16 @@ class Intervenants extends Repo
         $stmt->execute($data);
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
+
+    public function getIntervenantFromMissionId(array $data)
+    {
+        $interMission = new IntervenantsMission();
+        $intervenant = $interMission->getIntervenantByMissionId();
+        $sql = "SELECT * FROM Intervenants WHERE email = :email";
+        $stmt = $this->link->prepare($sql);
+        $stmt->execute($data);
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
+    }
+
+    
 }
