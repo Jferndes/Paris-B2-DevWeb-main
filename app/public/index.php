@@ -25,6 +25,7 @@
                 // Creation Session
                 $page->session->add('user', [
                     'id' => $user['id'],
+                    'prenom' => $user['id'],
                     'grade' => $user['grade']
                 ]);
                 $page->session->addFlash("Bienvenue", "success");
