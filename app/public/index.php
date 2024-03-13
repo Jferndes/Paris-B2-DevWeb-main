@@ -24,7 +24,7 @@
             } else {
                 // Creation Session
                 $page->session->add('user', [
-                    'email' => $user['email'],
+                    'id' => $user['id'],
                     'grade' => $user['grade']
                 ]);
                 $page->session->addFlash("Bienvenue", "success");

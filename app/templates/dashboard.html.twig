@@ -8,9 +8,7 @@
     </div>
 {% endif %}
 
-<h1>Dashbord</h1>
-<a href="logout.php">Déconnexion</a>
-
+<!--
 {% if isAdmin %}
     <div class="alert alert-success" role="alert">
         Vous êtes connecté en tant qu'administrateur.
@@ -20,40 +18,7 @@
         Vous êtes connecté en tant qu'utilisateur standard.
     </div>
 {% endif %}
-
-{% if missions %}
-    <h2>Liste des missions :</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Numéro de dossier</th>
-                <th>Motif</th>
-                <th>Adresse</th>
-                <th>Urgence</th>
-                <th>Intervenants</th>
-                <th>Standardiste</th>
-                <th>Client</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for mission in missions %}
-                <tr>
-                    <td>{{ mission.numeroDossier }}</td>
-                    <td>{{ mission.motif }}</td>
-                    <td>{{ mission.adresse_id }}</td>
-                    <td>{{ mission.urgence_id }}</td>
-                    <td>{{ mission.intervenantMission_id }}</td>
-                    <td>{{ mission.standardiste_id }}</td>
-                    <td>{{ mission.client_id }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-{% else %}
-    <div class="alert alert-info" role="alert">
-        Aucune mission trouvée.
-    </div>
-{% endif %}
+-->
 
 <div class="row mt-5 mx-5 justify-content-center">
     <div class="col-7">
@@ -63,7 +28,7 @@
                 <p>Vous êtes actuellement connecté blablabla</p>
             </div>
             <div class="col-3">
-                <button type="button" class="btn btn-primary"><h3>New</h3></button>
+                <a href="creerMission.php" class="btn btn-primary"><h3>New</h3></a>
             </div>
         </div>
     </div>
