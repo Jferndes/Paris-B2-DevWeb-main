@@ -41,7 +41,7 @@ class Mission extends Repo
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    public function getMyMissions(array $data)
+    public function getMyMissions(int $userId)
     {
         $sql = "SELECT m.numeroDossier, s.nomStatut, u.nomUrgence, c.nom AS nomClient, c.prenom AS prenomClient
                 FROM Missions m 
@@ -49,14 +49,14 @@ class Mission extends Repo
                     INNER JOIN UrgenceMission u ON m.urgence_id = u.id 
                     INNER JOIN Clients c ON m.client_id = c.id
                     INNER JOIN Standardistes st ON  m.standardiste_id = st.matricule
-                    INNER JOIN IntervenantsMission i ON m.numeroDossier = i.missison_id
+                    LEFT JOIN IntervenantsMission i ON m.numeroDossier = i.missison_id
                 WHERE
                     c.user_id = :userId
                     OR st.user_id = :userId
                     OR (SELECT user_id FROM Intervenants j WHERE j.matricule = i.intervenant_id) = :userId
                 "; 
         $stmt = $this->link->prepare($sql);
-        $stmt->execute($data);
+        $stmt->execute(['userId' => $userId]);
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
