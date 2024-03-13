@@ -11,8 +11,9 @@
 {% block body %}
     {% include "navbar.html.twig" %}
     {% if msg %}
-        <div class="alert alert-{{ msg[1] }} mt-3" role="alert">
-            {{ msg[0] }}
+        <div class="alert alert-{{msg[1]}} alert-dismissible" role="alert">
+            {{msg[0]}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     {% endif %}
 
@@ -20,7 +21,7 @@
         <div class="card col-md-9">
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h3 class="card-title mb-0">Bonjour MACHIN</h3>
+                    <h3 class="card-title mb-0">Bonjour {% if prenom %}{{prenom}}{% endif %}</h3>
                     <a href="creerMission.php" class="btn btn-primary"><h5>New Mission</h5></a>
                 </div>
             </div>
