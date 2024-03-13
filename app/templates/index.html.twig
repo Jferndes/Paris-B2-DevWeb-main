@@ -1,60 +1,67 @@
-{% extends "base_auth.html.twig" %}
+{% extends "base.html.twig" %}
+
+{% block css %}
+    <link rel="stylesheet" href="/css/auth.css">
+{% endblock %}
+
+{% block title %}
+    Connexion
+{% endblock %}
 
 {% block body %}
-
-<div class="container justify-content-center">
-    <div class="row">
-        <!-- Espacement gauche -->
-        <div class="col-3"></div>
-        <!-- Div de Connexion -->
-        <div class="col-6">
-            <div class="card mt-5">
-                <div class="card-header text-center">
-                    <h2>Connexion</h2>
-                </div>
-                <div class="card-body">
-                    <!-- Message Alerte -->
-                    {% if msg %}
-                        <div class="alert alert-{{msg[1]}}" role="alert">
-                            {{msg[0]}}
-                        </div>
-                    {% endif %}
-                    <!-- Formulaire de Connexion -->
-                    <form action="" method="post">
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email address</label>
-                            <input 
-                                class="form-control"
-                                type="email"
-                                id="email"
-                                name="email"
-                                required="required"
-                                placeholder="Entrez votre email"
-                            />
-                        </div>
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input 
-                                class="form-control"
-                                type="password"
-                                id="password"
-                                name="password"
-                                required="required"
-                                placeholder="Entrez votre password"
-                            />
-                        </div>
-                        <div class="mb-3">
-                            <a href="register.php">Pas de compte ?</a> 
-                        </div>
-                        <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-primary" value="Connexion" name="connexion">Submit</button>
-                        </div>
-                    </form>
+    <div class="container justify-content-center">
+        <div class="row">
+            <!-- Espacement gauche -->
+            <div class="col-3"></div>
+            <!-- Div de Connexion -->
+            <div class="col-6">
+                <div class="card mt-5">
+                    <div class="card-header text-center">
+                        <h2>Connexion</h2>
+                    </div>
+                    <div class="card-body">
+                        <!-- Message Alerte -->
+                        {% if msg %}
+                            <div class="alert alert-{{msg[1]}}" role="alert">
+                                {{msg[0]}}
+                            </div>
+                        {% endif %}
+                        <!-- Formulaire de Connexion -->
+                        <form action="" method="post">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email address</label>
+                                <input 
+                                    class="form-control"
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    required="required"
+                                    placeholder="Entrez votre email"
+                                />
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input 
+                                    class="form-control"
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    required="required"
+                                    placeholder="Entrez votre password"
+                                />
+                            </div>
+                            <div class="mb-3">
+                                <a href="register.php">Pas de compte ?</a> 
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary" value="Connexion" name="connexion">Connexion</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
+            <!-- Espacement droit -->
+            <div class="col-3"></div>
         </div>
-        <!-- Espacement droit -->
-        <div class="col-3"></div>
     </div>
-</div>
 {% endblock body %}
