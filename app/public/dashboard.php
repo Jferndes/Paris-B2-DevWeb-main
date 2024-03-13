@@ -3,27 +3,23 @@
     require_once '../vendor/autoload.php';
 
     use App\Page;
+    use App\Mission;
+    use App\IntervenantsMission;
     use App\Repo;
 
     $page = new Page();
-    $repo = new Repo();
-
-    // Récupérer les données depuis la base de données
-    $missions = $repo->getAllTable('Missions');
+    $mission = new Mission();
+    $intervenantsMission = new IntervenantsMission();
 
     if (!$page->session->isConnected()) {
         header("Location: index.php");
         exit();
     }
 
-    $msg = isset($_SESSION["flash"]) ? $page->session->getFlash() : false;
-
-    // Ajoutez une variable isAdmin à l'ensemble de données Twig
-    $isAdmin = $page->session->isAdmin();
-
     echo $page->render('dashboard.html.twig', [
-        'msg' => $msg,
-        'isAdmin' => $isAdmin // Transmettez la variable isAdmin à Twig
+        'msg' => isset($_SESSION["flash"]) ? $page->session->getFlash() : false,
+        'missions' => $mission->getAllMission(),
+        'isAdmin' => $page->session->isAdmin()
     ]);
 
 ?>
