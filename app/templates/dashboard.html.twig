@@ -1,44 +1,35 @@
 {% extends "base.html.twig" %}
 
+{% block css %}
+    <link rel="stylesheet" href="/css/dashboard.css">
+{% endblock %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
 {% block body %}
-{% include "navbar.html.twig" %}
-{% if msg %}
-    <div class="alert alert-{{ msg[1] }}" role="alert">
-        {{ msg[0] }}
-    </div>
-{% endif %}
+    {% include "navbar.html.twig" %}
+    {% if msg %}
+        <div class="alert alert-{{ msg[1] }} mt-3" role="alert">
+            {{ msg[0] }}
+        </div>
+    {% endif %}
 
-<!--
-{% if isAdmin %}
-    <div class="alert alert-success" role="alert">
-        Vous êtes connecté en tant qu'administrateur.
-    </div>
-{% else %}
-    <div class="alert alert-info" role="alert">
-        Vous êtes connecté en tant qu'utilisateur standard.
-    </div>
-{% endif %}
--->
-
-<div class="row mt-5 mx-5 justify-content-center">
-    <div class="col-7">
-        <div class="row mb-3 align-items-center">
-            <div class="col-9">
-                <h3>Bonjour MACHIN</h3>
-                <p>Vous êtes actuellement connecté blablabla</p>
-            </div>
-            <div class="col-3">
-                <a href="creerMission.php" class="btn btn-primary"><h3>New</h3></a>
+    <div class="container mt-5">
+        <div class="card col-md-9">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h3 class="card-title mb-0">Bonjour MACHIN</h3>
+                    <a href="creerMission.php" class="btn btn-primary"><h5>New Mission</h5></a>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-<div class="row">
-    <div class="container">
-        <div class="row">
-            <div class="col-9">
+
+        <div class="row mt-4">
+            <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header bg-primary text-white">
                         <h2 class="card-title">Mes Interventions</h2>
                     </div>
                     <div class="card-body">
@@ -67,10 +58,14 @@
                     </div>
                 </div>
             </div>
-            <div class="col-3">
-                text
+            <div class="col-md-3">
+                <div class="card mb-5">
+                    <div class="card-body">
+                        <h5 class="card-title">Texte</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vel justo nec lectus aliquet fermentum. Ut et risus id magna tincidunt efficitur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vel justo nec lectus aliquet fermentum. Ut et risus id magna tincidunt efficitur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vel justo nec lectus aliquet fermentum. Ut et risus id magna tincidunt efficitur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vel justo nec lectus aliquet fermentum. Ut et risus id magna tincidunt efficitur. </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
 {% endblock body %}
