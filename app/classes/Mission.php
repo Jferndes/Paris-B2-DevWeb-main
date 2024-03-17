@@ -52,7 +52,7 @@ class Mission extends Repo
                 LEFT JOIN IntervenantsMission im ON m.numeroDossier = im.missison_id
                 LEFT JOIN Intervenants i ON im.intervenant_id = i.matricule
                 LEFT JOIN Standardistes std ON m.standardiste_id = std.matricule
-                WHERE c.user_id = :userId OR i.user_id = :userId OR std.user_id = :userId";
+                WHERE c.user_id = :userId AND (i.user_id IS NULL OR std.user_id IS NULL)";
         
         // Préparer et exécuter la requête
         $stmt = $this->link->prepare($sql);

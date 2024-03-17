@@ -1,5 +1,6 @@
 {% block body %}
     {% include "navbar.html.twig" %}
+    {% include "base.html.twig" %}
     {% if msg %}
         <div class="alert alert-{{ msg[1] }} mt-3" role="alert">
             {{ msg[0] }}
@@ -33,6 +34,9 @@
                                             <th>Urgence</th>
                                             <th>Motif</th>
                                             <th>Client</th>
+                                            {% if isAdmin %}
+                                                <th>Actions</th>
+                                            {% endif %}
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -43,6 +47,12 @@
                                                 <td>{{ mission.nomUrgence }}</td>
                                                 <td>{{ mission.motif }}</td>
                                                 <td>{{ mission.nomClient }} {{ mission.prenomClient }}</td>
+                                                {% if isAdmin %}
+                                                    <td>
+                                                        <a href="editerMission.php?id={{ mission.id }}" class="btn-edit">Editer</a>
+                                                        <a href="supprimerMission.php?id={{ mission.id }}" class="btn-del">Supprimer</a>
+                                                    </td>
+                                                {% endif %}
                                             </tr>
                                         {% endfor %}
                                     </tbody>
