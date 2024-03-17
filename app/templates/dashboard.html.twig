@@ -1,13 +1,3 @@
-{% extends "base.html.twig" %}
-
-{% block css %}
-    <link rel="stylesheet" href="/css/dashboard.css">
-{% endblock %}
-
-{% block title %}
-    Dashboard
-{% endblock %}
-
 {% block body %}
     {% include "navbar.html.twig" %}
     {% if msg %}
@@ -21,7 +11,7 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center">
                     <h3 class="card-title mb-0">Bonjour MACHIN</h3>
-                    <a href="creerMission.php" class="btn btn-primary"><h5>New Mission</h5></a>
+                    <a href="creerMission.php" class="btn btn-primary"><h5>Ajouter une mission</h5></a>
                 </div>
             </div>
         </div>
@@ -34,26 +24,32 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Numéro de Dossier</th>
-                                        <th>Statut</th>
-                                        <th>Urgence</th>
-                                        <th>Client</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for mission in missions %}
+                            {% if missions %}
+                                <table class="table table-striped table-hover">
+                                    <thead>
                                         <tr>
-                                            <td>{{ mission.numeroDossier }}</td>
-                                            <td>{{ mission.nomStatut }}</td>
-                                            <td>{{ mission.nomUrgence }}</td>
-                                            <td>{{ mission.nomClient }} {{ mission.prenomClient }}</td>
+                                            <th>Numéro de Dossier</th>
+                                            <th>Statut</th>
+                                            <th>Urgence</th>
+                                            <th>Motif</th>
+                                            <th>Client</th>
                                         </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        {% for mission in missions %}
+                                            <tr>
+                                                <td>{{ mission.numeroDossier }}</td>
+                                                <td>{{ mission.nomStatut }}</td>
+                                                <td>{{ mission.nomUrgence }}</td>
+                                                <td>{{ mission.motif }}</td>
+                                                <td>{{ mission.nomClient }} {{ mission.prenomClient }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            {% else %}
+                                <p>Aucune mission disponible.</p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
