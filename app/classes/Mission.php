@@ -51,9 +51,14 @@ class Mission extends Repo
                     INNER JOIN Standardistes st ON  m.standardiste_id = st.matricule
                     LEFT JOIN IntervenantsMission i ON m.numeroDossier = i.missison_id
                 WHERE
-                    c.user_id = :userId
-                    OR st.user_id = :userId
-                    OR (SELECT user_id FROM Intervenants j WHERE j.matricule = i.intervenant_id) = :userId
+                    m.statut_id != 1
+                    AND ( c.user_id = :userId
+                        OR st.user_id = :userId
+                        OR (SELECT user_id FROM Intervenants j WHERE j.matricule = i.intervenant_id) = :userId
+                        )
+                ORDER BY
+                    m.created_at DESC
+                LIMIT 3
                 "; 
         $stmt = $this->link->prepare($sql);
         $stmt->execute(['userId' => $userId]);
