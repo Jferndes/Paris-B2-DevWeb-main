@@ -30,7 +30,7 @@
         <div class="row mt-4">
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header bg-primary text-white">
+                    <div class="card-header bg-secondary text-white">
                         <h2 class="card-title">Mes Interventions</h2>
                     </div>
                     <div class="card-body">
@@ -47,7 +47,7 @@
                                 <tbody>
                                     {% for mission in missions %}
                                         <tr>
-                                            <td>{{ mission.numeroDossier }}</td>
+                                            <td> <a href="">{{ mission.numeroDossier }}</a></td>
                                             <td>{{ mission.nomStatut }}</td>
                                             <td>{{ mission.nomUrgence }}</td>
                                             <td>{{ mission.nomClient }} {{ mission.prenomClient }}</td>
@@ -55,15 +55,30 @@
                                     {% endfor %}
                                 </tbody>
                             </table>
+                            <div class="text-center">
+                                <a href="" >Voir toutes les missions</a>
+                            </div>
                         </div>
+                    </div>
+                </div>
+                <div class="card my-5">
+                    <div class="card-header bg-secondary text-white">
+                        <h2 class="card-title">Agenda</h2>
+                    </div>
+                    <div class="card-body" style="height: 200px;">
+                        
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card mb-5">
+                <div class="card mb-5" style="height: 300px;">
                     <div class="card-body">
-                        <h5 class="card-title">Texte</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vel justo nec lectus aliquet fermentum. Ut et risus id magna tincidunt efficitur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vel justo nec lectus aliquet fermentum. Ut et risus id magna tincidunt efficitur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vel justo nec lectus aliquet fermentum. Ut et risus id magna tincidunt efficitur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vel justo nec lectus aliquet fermentum. Ut et risus id magna tincidunt efficitur. </p>
+                        <h5 class="card-title">Rappel</h5>
+                    </div>
+                </div>
+                <div class="card mb-5" style="height: 260px;">
+                    <div class="card-body">
+                        <h5 class="card-title">Liste Tâches</h5>
                     </div>
                 </div>
             </div>
