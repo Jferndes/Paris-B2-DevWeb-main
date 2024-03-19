@@ -24,6 +24,7 @@ if ($page->session->isAdmin()) {
 }
 
 // Vérifier si des missions ont été récupérées
+/*
 if ($missions) {
     // Parcourir chaque mission
     foreach ($missions as $mission) {
@@ -34,6 +35,7 @@ if ($missions) {
         $mission->setNumeroDossier($numeroDossier); // Assurez-vous que cette méthode est correctement définie dans la classe Mission
     }
 }
+*/
 
 echo $page->render('dashboard.html.twig', [
     'msg' => isset($_SESSION["flash"]) ? $page->session->getFlash() : false,
