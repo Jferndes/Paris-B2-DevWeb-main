@@ -23,11 +23,11 @@ class IntervenantsMission extends Repo
         $stmt->execute($data);
     }
 
-    public function getIntervenantByMissionId(array $data)
+    public function getIntervenantsByMissionId(int $missionId)
     {
-        $sql = "SELECT * FROM IntervenantsMission WHERE misison_id = :misison_id";
+        $sql = "SELECT * FROM IntervenantsMission WHERE missison_id = $missionId";
         $stmt = $this->link->prepare($sql);
-        $stmt->execute($data);
-        return $stmt->fetch(\PDO::FETCH_ASSOC);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 }

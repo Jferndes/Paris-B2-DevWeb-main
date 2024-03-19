@@ -47,7 +47,7 @@
                                 <tbody>
                                     {% for mission in missions %}
                                         <tr>
-                                            <td> <a href="">{{ mission.numeroDossier }}</a></td>
+                                            <td> <a href="detailMission.php?mission_id={{ mission.numeroDossier }}">{{ mission.numeroDossier }}</a></td>
                                             <td>{{ mission.nomStatut }}</td>
                                             <td>{{ mission.nomUrgence }}</td>
                                             <td>{{ mission.nomClient }} {{ mission.prenomClient }}</td>
@@ -71,14 +71,23 @@
                 </div>
             </div>
             <div class="col-md-3">
+                <!-- Annonce -->
                 <div class="card mb-5" style="height: 300px;">
                     <div class="card-body">
-                        <h5 class="card-title">Rappel</h5>
+                        <h5 class="card-title">Annonces</h5>
+                        <p><strong>Annonce : </strong> Réunion de coordination ce jeudi à 10h dans la salle de conférence.</p>
+                        <p><strong>Information :</strong> La nouvelle version du logiciel de gestion des missions sera déployée demain. Veuillez sauvegarder votre travail.</p>
                     </div>
                 </div>
+                <!-- Liste Tâches -->
                 <div class="card mb-5" style="height: 260px;">
                     <div class="card-body">
                         <h5 class="card-title">Liste Tâches</h5>
+                        <ul>
+                            <li>Faire les comptes rendus</li>
+                            <li>Appeler le client X pour fixer un rendez-vous</li>
+                            <li>Préparer le matériel pour la mission Y</li>
+                        </ul>
                     </div>
                 </div>
             </div>

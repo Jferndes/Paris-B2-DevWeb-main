@@ -29,16 +29,23 @@ class Mission extends Repo
         $stmt->execute($data);
     }
 
-    public function getAllMission()
+    public function getAllInfoMission(int $mission_id)
     {
-        $sql = "SELECT m.numeroDossier, s.nomStatut, u.nomUrgence, c.nom AS nomClient, c.prenom AS prenomClient
+        $sql = "SELECT  m.numeroDossier, m.motif, 
+                        st.nom AS StandardisteNom, st.prenom AS StandardistePrenom, st.tel AS StandardisteTel, st.email AS StandardisteEmail,
+                        c.nom AS ClientNom, c.prenom AS ClientPrenom, c.tel AS ClientTel, c.email AS ClientEmail,
+                        a.numero AS AdresseNumero, a.rue AS AdresseRue, a.ville AS AdresseVille, a.codePostal AS AdresseCodePostal, a.pays AS AdressePays,
+                        s.nomStatut, u.nomUrgence
                 FROM Missions m 
                 INNER JOIN StatutMission s ON m.statut_id = s.id 
                 INNER JOIN UrgenceMission u ON m.urgence_id = u.id 
-                INNER JOIN Clients c ON m.client_id = c.id";
+                INNER JOIN Standardistes st ON  m.standardiste_id = st.matricule
+                INNER JOIN Clients c ON m.client_id = c.id
+                INNER JOIN Adresses a ON a.id = c.adresse_id
+                WHERE m.numeroDossier = $mission_id";
         $stmt = $this->link->prepare($sql);
         $stmt->execute();
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
 
     public function getMyMissions(int $userId)
