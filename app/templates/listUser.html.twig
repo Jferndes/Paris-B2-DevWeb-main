@@ -1,29 +1,30 @@
-{% extends "base.html.twig" %} {% block css %}
-<link rel="stylesheet" href="/css/list.css" />
-{% endblock %} {% block body %} {% include "navbar.html.twig" %} {% if msg %}
-<div class="alert alert-{{ msg[1] }}" role="alert">
-  {{ msg[0] }}
-</div>
+{% extends "base.html.twig" %}
+
+{% block body %}
+{% include "navbar.html.twig" %}
+{% if msg %}
+    <div class="alert alert-{{msg[1]}} alert-dismissible" role="alert">
+        {{msg[0]}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
 {% endif %}
 
 <div class="container">
-  <table class="table">
-    <div class="card">
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Email</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for user in users %}
-        <tr>
-          <td>{{ user.id }}</td>
-          <td>{{ user.email }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </div>
-  </table>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.email }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
 {% endblock body %}
