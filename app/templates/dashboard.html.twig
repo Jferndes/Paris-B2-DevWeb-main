@@ -1,19 +1,9 @@
-{% extends "base.html.twig" %}
-
-{% block css %}
-    <link rel="stylesheet" href="/css/dashboard.css">
-{% endblock %}
-
-{% block title %}
-    Dashboard
-{% endblock %}
-
 {% block body %}
     {% include "navbar.html.twig" %}
+    {% include "base.html.twig" %}
     {% if msg %}
-        <div class="alert alert-{{msg[1]}} alert-dismissible" role="alert">
-            {{msg[0]}}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <div class="alert alert-{{ msg[1] }} mt-3" role="alert">
+            {{ msg[0] }}
         </div>
     {% endif %}
 
@@ -21,8 +11,8 @@
         <div class="card col-md-9">
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h3 class="card-title mb-0">Bonjour {% if prenom %}{{prenom}}{% endif %}</h3>
-                    <a href="creerMission.php" class="btn btn-primary"><h5>New Mission</h5></a>
+                    <h3 class="card-title mb-0">Bonjour MACHIN</h3>
+                    <a href="creerMission.php" class="btn btn-primary"><h5>Ajouter une mission</h5></a>
                 </div>
             </div>
         </div>
@@ -35,29 +25,44 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Numéro de Dossier</th>
-                                        <th>Statut</th>
-                                        <th>Urgence</th>
-                                        <th>Client</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for mission in missions %}
+                            {% if missions %}
+                                <table class="table table-striped table-hover">
+                                    <thead>
                                         <tr>
-                                            <td> <a href="">{{ mission.numeroDossier }}</a></td>
-                                            <td>{{ mission.nomStatut }}</td>
-                                            <td>{{ mission.nomUrgence }}</td>
-                                            <td>{{ mission.nomClient }} {{ mission.prenomClient }}</td>
+                                            <th>Numéro de Dossier</th>
+                                            <th>Statut</th>
+                                            <th>Urgence</th>
+                                            <th>Motif</th>
+                                            <th>Client</th>
+                                            {% if isAdmin %}
+                                                <th>Actions</th>
+                                            {% endif %}
                                         </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        {% for mission in missions %}
+                                            <tr>
+                                                <td> <a href="">{{ mission.numeroDossier }}</a></td>
+                                                <td>{{ mission.nomStatut }}</td>
+                                                <td>{{ mission.nomUrgence }}</td>
+                                                <td>{{ mission.motif }}</td>
+                                                <td>{{ mission.nomClient }} {{ mission.prenomClient }}</td>
+                                                {% if isAdmin %}
+                                                    <td>
+                                                        <a href="editerMission.php?id={{ mission.id }}" class="btn-edit">Editer</a>
+                                                        <a href="supprimerMission.php?id={{ mission.id }}" class="btn-del">Supprimer</a>
+                                                    </td>
+                                                {% endif %}
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
                             <div class="text-center">
                                 <a href="" >Voir toutes les missions</a>
                             </div>
+                            {% else %}
+                                <p>Aucune mission disponible.</p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

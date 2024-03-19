@@ -33,9 +33,8 @@
                 <div class="card-body">
                     <!-- Message Alerte -->
                     {% if msg %}
-                    <div class="alert alert-{{msg[1]}} alert-dismissible" role="alert">
+                    <div class="alert alert-{{msg[1]}}" role="alert">
                         {{msg[0]}}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                     {% endif %}
                     <!-- Formulaire de Connexion -->
