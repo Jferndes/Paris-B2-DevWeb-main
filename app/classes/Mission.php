@@ -41,9 +41,8 @@ class Mission extends Repo
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    public function getAllMissionForUser($userId)
+    public function getMyMissions(int $userId)
     {
-        // Requête SQL pour récupérer les missions en fonction de l'utilisateur
         $sql = "SELECT m.numeroDossier, s.nomStatut, u.nomUrgence, c.nom AS nomClient, c.prenom AS prenomClient
                 FROM Missions m 
                     INNER JOIN StatutMission s ON m.statut_id = s.id 
@@ -62,10 +61,10 @@ class Mission extends Repo
                 LIMIT 3
                 "; 
         $stmt = $this->link->prepare($sql);
-        $stmt->bindParam(':userId', $userId, \PDO::PARAM_INT);
-        $stmt->execute();
-        
-        // Retourner les résultats
+        $stmt->execute(['userId' => $userId]);
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+
+
+
 }
