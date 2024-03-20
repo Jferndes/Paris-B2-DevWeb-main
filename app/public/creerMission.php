@@ -6,8 +6,6 @@ use App\Repo;
 $page = new Page();
 $repo = new Repo();
 
-//Ici le if ne marche pas, corriger etc
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Utilisez $page->session->userID() pour obtenir l'ID de l'utilisateur
     $user_id = $page->session->getUserId();

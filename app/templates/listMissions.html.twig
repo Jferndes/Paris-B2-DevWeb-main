@@ -1,0 +1,47 @@
+{% extends "base.html.twig" %} {% block body %} {% include "navbar.html.twig" %}
+{% if msg %}
+<div class="alert alert-{{ msg[1] }} alert-dismissible" role="alert">
+  {{ msg[0] }}
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+{% endif %}
+
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Numéro de Dossier</th>
+        <th>Statut</th>
+        <th>Urgence</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for mission in missions %}
+      <tr>
+        <td>{{ mission.numeroDossier }}</td>
+        <td>{{ mission.statut_id }}</td>
+        <td>{{ mission.urgence_id }}</td>
+        <td>
+          <a
+            href="editMission.php?mission_id={{ mission.numeroDossier }}"
+            class="btn btn-primary"
+            >Editer</a
+          >
+          <a
+            href="supprimerMission.php?mission_id={{ mission.numeroDossier }}"
+            class="btn btn-primary"
+            >Supprimer</a
+          >
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock body %}
