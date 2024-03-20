@@ -1,0 +1,44 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+{% include "navbar.html.twig" %}
+{% if msg %}
+    <div class="alert alert-{{msg[1]}} alert-dismissible" role="alert">
+        {{msg[0]}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endif %}
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>matricule</th>
+                <th>nom</th>
+                <th>prenom</th>
+                <th>tel</th>
+                <th>email</th>
+                <th>user_id</th>
+                <th>standardiste_id</th>
+                <th>created_at</th>
+                <th>updated_at</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for intervenant in intervenants %}
+                <tr>
+                    <td>{{ intervenant.matricule }}</td>
+                    <td>{{ intervenant.nom }}</td>
+                    <td>{{ intervenant.prenom }}</td>
+                    <td>{{ intervenant.tel }}</td>
+                    <td>{{ intervenant.email }}</td>
+                    <td>{{ intervenant.user_id }}</td>
+                    <td>{{ intervenant.standardiste_id }}</td>
+                    <td>{{ intervenant.created_at }}</td>
+                    <td>{{ intervenant.updated_at }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock body %}

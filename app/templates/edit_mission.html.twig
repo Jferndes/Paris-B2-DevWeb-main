@@ -1,0 +1,70 @@
+{% extends "base.html.twig" %}
+
+{% block css %}
+    <link rel="stylesheet" href="/css/form.css" />
+{% endblock %}
+
+{% block title %}
+    Éditer Mission
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Éditer la mission</h1>
+        <form action="editMission.php" method="post">
+            <input type="hidden" name="mission_id" value="{{ mission.numeroDossier }}" />
+
+            <label for="motif">Motif :</label>
+            <input type="text" id="motif" name="motif" value="{{ mission.motif }}" required /><br /><br />
+
+            <label for="urgence">Urgence :</label>
+            <select id="urgence" name="urgence" required>
+                {% for urgence in urgences %}
+                    <option value="{{ urgence.id }}">{{ urgence.nomUrgence }}</option>
+                {% endfor %}
+            </select><br /><br />
+
+            <label for="adresse">Adresse :</label>
+            <select id="adresse" name="adresse" required>
+                {% for adresse in adresses %}
+                    <option value="{{ adresse.id }}">
+                        {{ adresse.numero }} {{ adresse.rue }} {{ adresse.ville }}
+                        {{ adresse.codePostal }}
+                    </option>
+                {% endfor %}
+            </select><br /><br />
+
+            <label for="commentaire">Commentaire :</label>
+            <textarea id="commentaire" name="commentaire" required>{{ mission.commentaire_id }}</textarea><br /><br />
+
+            <label for="intervenants">Intervenants :</label>
+            <select id="intervenants" name="intervenants[]" multiple required>
+                {% for intervenant in intervenants %}
+                    <option value="{{ intervenant.matricule }}">
+                        {{ intervenant.nom }} {{ intervenant.prenom }}
+                    </option>
+                {% endfor %}
+            </select><br /><br />
+
+            <label for="standardiste">Standardiste :</label>
+            <select id="standardiste" name="standardiste" required>
+                {% for standardiste in standardistes %}
+                    <option value="{{ standardiste.matricule }}">
+                        {{ standardiste.nom }} {{ standardiste.prenom }}
+                    </option>
+                {% endfor %}
+            </select><br /><br />
+
+            <label for="client">Client :</label>
+            <select id="client" name="client" required>
+                {% for client in clients %}
+                    <option value="{{ client.id }}">
+                        {{ client.nom }} {{ client.prenom }}
+                    </option>
+                {% endfor %}
+            </select><br /><br />
+
+            <input type="submit" value="Mettre à jour la mission" />
+        </form>
+    </div>
+{% endblock %}
