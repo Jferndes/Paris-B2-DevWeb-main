@@ -1,0 +1,52 @@
+{% extends "base.html.twig" %}
+
+{% block css %}
+    <link rel="stylesheet" href="/css/dashboard.css">
+{% endblock %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block body %}
+    {% include "navbar.html.twig" %}
+    {% if msg %}
+        <div class="alert alert-{{msg[1]}} alert-dismissible" role="alert">
+            {{msg[0]}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endif %}
+    
+    <div class="container my-5">
+        <div class="card">
+            <div class="card-header bg-secondary text-white">
+                <h2 class="card-title">Toutes mes interventions</h2>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Numéro de Dossier</th>
+                                <th>Statut</th>
+                                <th>Urgence</th>
+                                <th>Client</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for mission in missions %}
+                                <tr>
+                                    <td> <a href="detailMission.php?mission_id={{ mission.numeroDossier }}">{{ mission.numeroDossier }}</a></td>
+                                    <td>{{ mission.nomStatut }}</td>
+                                    <td>{{ mission.nomUrgence }}</td>
+                                    <td>{{ mission.nomClient }} {{ mission.prenomClient }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+    
