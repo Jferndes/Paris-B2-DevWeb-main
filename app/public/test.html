@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Affichage de carte Google Maps</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKXXvcWfEp5raPW_Qm5CBRNZKkfJLV8fM&callback=initMap" async defer></script>
+    <script>
+        // Fonction d'initialisation de la carte
+        function initMap() {
+            // Adresse à convertir en coordonnées géographiques
+            var adresse = "1600 Amphitheatre Parkway, Mountain View, CA";
+
+            // Création de l'objet Geocoder
+            var geocoder = new google.maps.Geocoder();
+
+            // Utilisation de Geocoder pour obtenir les coordonnées géographiques de l'adresse
+            geocoder.geocode({ 'address': adresse }, function (results, status) {
+                if (status == 'OK') {
+                    // Récupération des coordonnées géographiques
+                    var latitude = results[0].geometry.location.lat();
+                    var longitude = results[0].geometry.location.lng();
+
+                    // Création de la carte
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                        center: { lat: latitude, lng: longitude },
+                        zoom: 15
+                    });
+
+                    // Ajout d'un marqueur pour l'adresse
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: { lat: latitude, lng: longitude },
+                        title: adresse
+                    });
+                } else {
+                    alert('Geocode n\'a pas réussi pour la raison suivante: ' + status);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <!-- Div pour afficher la carte -->
+    <div id="map" style="height: 400px; width: 100%;"></div>
+</body>
+</html>

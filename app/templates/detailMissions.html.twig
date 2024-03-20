@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block title %}
-    Dashboard
+    Détail de la Mission
 {% endblock %}
 
 {% block body %}
@@ -16,5 +16,112 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     {% endif %}
-      
-{% endblock body %}
+
+    <div class="container mt-5">
+        <h2 class="mb-5">Détails de la Mission</h2>
+        
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header bg-secondary text-white">
+                        <h4 class="card-title">Informations générales</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <p><strong>N° Dossier :</strong> {{ mission.numeroDossier }}</p>
+                            </div>
+                            <div class="col-md-3">
+                                <p><strong>Statut :</strong> {{ mission.nomStatut }}</p>
+                            </div>
+                            <div class="col-md-3">
+                                <p><strong>Urgence :</strong> {{ mission.nomUrgence }}</p>
+                            </div>
+                            <div class="col-md-3">
+                                <p><strong>Motif :</strong> {{ mission.motif }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-secondary text-white">
+                        <h4 class="card-title">Détails du Client :</h4>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Nom :</strong> {{ mission.ClientNom }}</p>
+                        <p><strong>Prénom :</strong> {{ mission.ClientPrenom }}</p>
+                        <p><strong>Email :</strong> {{ mission.ClientEmail }}</p>
+                        <p><strong>Téléphone :</strong> {{ mission.ClientTel }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-secondary text-white">
+                        <h4 class="card-title">Détails du Standardiste :</h4>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Nom :</strong> {{ mission.StandardisteNom }}</p>
+                        <p><strong>Prénom :</strong> {{ mission.StandardistePrenom }}</p>
+                        <p><strong>Email :</strong> {{ mission.StandardisteEmail }}</p>
+                        <p><strong>Téléphone :</strong> {{ mission.StandardisteTel }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header bg-secondary text-white">
+                        <h4 class="card-title">Adresse : <strong>{{ adresseMission }}</strong></h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="map" style="height: 400px; width: 100%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKXXvcWfEp5raPW_Qm5CBRNZKkfJLV8fM&callback=initMap" async defer></script>
+    <script>
+        // Fonction d'initialisation de la carte prenant l'adresse en paramètre
+        function initMap() {
+            // Création de l'objet Geocoder
+            var adresse = "{{ adresseMission }}";
+            var geocoder = new google.maps.Geocoder();
+
+            // Utilisation de Geocoder pour obtenir les coordonnées géographiques de l'adresse
+            geocoder.geocode({ 'address': adresse }, function (results, status) {
+                if (status == 'OK') {
+                    // Récupération des coordonnées géographiques
+                    var latitude = results[0].geometry.location.lat();
+                    var longitude = results[0].geometry.location.lng();
+
+                    // Création de la carte
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                        center: { lat: latitude, lng: longitude },
+                        zoom: 15
+                    });
+
+                    // Ajout d'un marqueur pour l'adresse
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: { lat: latitude, lng: longitude },
+                        title: adresse
+                    });
+                } else {
+                    alert('Geocode n\'a pas réussi pour la raison suivante: ' + status);
+                }
+            });
+        }
+        initMap();
+    </script>
+{% endblock %}
+
